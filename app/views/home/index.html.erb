@@ -1,0 +1,16 @@
+<h1><%= Setting.app_subtitle %></h1>
+<p class="red">
+  Depot是一个Rails知识仓库，它的主要目的是整理Rails开发经验以及制定团队的开发代码规范。上面提供了相应代码或者实例，小组成员可以自由下载和使用。
+</p>
+<%
+   line_num=0
+
+   text = File.open("#{Rails.root}/Gemfile").read
+   #text.gsub!(/\r\n?/, "\n")
+%>
+<% text.each_line do |line|
+  color = ""
+  3.times { |x| color << ('A'..'F').to_a[rand(6)] }
+%>
+    <%= "<span style='width:8px;text-align:center;background-color:##{color};margin-right:5px;'>#{line_num += 1}</span> #{line}<br>".html_safe %>
+<% end %>

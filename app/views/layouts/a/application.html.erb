@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : 'Depot on Rails' %></title>
+
+    <%= stylesheet_link_tag 'application' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tag %>
+
+    <%= yield(:head) %>
+  </head>
+
+  <body data-controller="<%= params[:controller] %>">
+    <div class="container">
+      <div class="content">
+        <div class="row">
+          <div class="span16">
+            <%= render :partial => 'common/flashes' %>
+            <%= yield %>
+          </div>
+        </div>
+
+        <footer>
+        <%= render :partial => 'common/footer' %>
+        </footer>
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,3 @@
+#Depot 开发文档
+bundle exec rake assets:precompile
+

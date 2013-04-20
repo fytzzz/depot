@@ -1,0 +1,7 @@
+== USAGE:
+#生成迁移文件
+rails generate rm_settings:migration
+#生成配置文件
+rails generate rm_settings:config
+#0.0.2版本同时生成迁移文件和配置文件
+rails generate rm_settings:install

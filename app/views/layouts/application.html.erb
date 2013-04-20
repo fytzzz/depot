@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title><%= content_for?(:title) ? yield(:title) : Setting.app_subtitle %></title>
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tag %>
+  <%= yield(:head) %>
+</head>
+
+<body data-controller="<%= params[:controller] %>">
+<!--topbar-->
+<div class="topbar">
+  <div class="fill">
+    <div class="container">
+      <%= render :partial => 'common/menu' %>
+    </div>
+  </div>
+</div>
+
+<!--main body-->
+<div class="container">
+  <div class="content" style="min-height:450px;">
+    <div class="row">
+      <div class="span12">
+        <%= render :partial => 'common/flashes' %>
+        <div id="content">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- footer-->
+    <footer>
+      <%= render :partial => 'common/footer' %>
+    </footer>
+</body>
+</html>

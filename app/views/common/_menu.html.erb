@@ -1,0 +1,30 @@
+<div class="navbar navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%
+         menus = []
+         menus << content_tag('li', link_to("首页",root_path))
+         menus << content_tag('li', link_to("博客",posts_path)) if user_signed_in?
+      %>
+      <ul class="nav" id="menu">
+        <%= menus.join("<li class='divider-vertical'></li>").html_safe %>
+      </ul>
+
+      <form method="post" id="post_search" class="navbar-search pull-left" action="/posts/index" accept-charset="UTF-8"><div style="margin: 0pt; padding: 0pt; display: inline;"><input type="hidden" value="✓" name="utf8"><input type="hidden" value="uueVFd+hFk8uwlW4LoKWR3xOjtHPEdwU1pT5x6IwIns=" name="authenticity_token"></div>
+        <input type="text" size="30" placeholder="Search" name="search[title_contains]" id="search_title_contains" class="search-query span2"><br>
+      </form>
+
+      <ul class="nav pull-right">
+        <% if user_signed_in? -%>
+            <li><%= link_to current_user.email, edit_user_registration_path %></li>
+            <li><%= link_to '管理', admin_path %></li>
+            <li class="divider-vertical"></li>
+            <li><%= link_to '退出登录', destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+            <li><%= link_to '注册', new_user_registration_path %></li>
+            <li><%= link_to '登录', new_user_session_path %></li>
+        <% end -%>
+      </ul>
+    </div>
+  </div>
+</div>

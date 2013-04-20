@@ -1,0 +1,13 @@
+<p>
+  <b>标签:</b>
+  <% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+      <%= link_to tag.name, {:action => "tag_cloud",:id => tag.name,:page=>params[:page]}, :class => css_class %>
+  <% end %>
+  <style type="text/css">
+      .css1 { font-size: 1.0em;color:#F00 !important; }
+      .css2 { font-size: 1.2em;color:#0F0 !important; }
+      .css3 { font-size: 1.4em;color:#00F !important; }
+      .css4 { font-size: 1.6em;color:#000 !important; }
+  </style>
+</p>
+
